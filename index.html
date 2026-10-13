@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#12090d">
+<title>A Special Question | Aireen &amp; Matej</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--wine:#7f1834;--gold:#d4af37;--cream:#fff4e2}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;min-height:100vh;color:var(--cream);font-family:Montserrat,Arial,sans-serif;background:#10080b url('https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=2200&q=85') center/cover fixed no-repeat}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(8,5,8,.68),rgba(20,5,12,.54) 42%,rgba(5,4,6,.82));z-index:0}
+main{position:relative;z-index:1;width:min(100% - 30px,760px);margin:auto;padding:32px 0 40px;text-align:center}
+.eyebrow{font-size:.65rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold)}
+.script{font-family:"Great Vibes",cursive;color:var(--gold);font-size:clamp(2.5rem,8vw,3.5rem);margin:8px 0}
+h1{font:500 clamp(2.2rem,7vw,3.6rem)/1.05 "Cormorant Garamond",serif;margin:8px 0 12px}
+.intro{max-width:440px;margin:0 auto;color:#f0e1db;font-size:.9rem;line-height:1.8}
+.scene{min-height:300px;display:grid;place-items:center;perspective:1000px;margin:14px auto 0}
+.envelope{position:relative;width:min(88vw,370px);height:230px;background:linear-gradient(135deg,#29272a,#111113 62%,#050506);border-radius:6px;filter:drop-shadow(0 24px 28px #0009)}
+.front{position:absolute;inset:0;z-index:3;clip-path:polygon(0 0,50% 55%,100% 0,100% 100%,0 100%);background:linear-gradient(145deg,#222124,#0d0d0f);border-radius:6px}
+.flap{position:absolute;z-index:4;top:0;width:100%;height:62%;background:linear-gradient(150deg,#383438,#171619);clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .85s}
+.peek{position:absolute;z-index:2;left:7%;width:86%;height:85%;bottom:4px;background:linear-gradient(145deg,#fff6e8,#ead7b9);border:1px solid var(--gold);display:flex;justify-content:center;padding-top:22px;color:#6b1730;font:2rem "Great Vibes",cursive;transition:transform .9s}
+.seal{position:absolute;z-index:5;top:49%;left:50%;transform:translate(-50%,-50%);width:67px;height:67px;border-radius:50%;border:1px solid #f4df91;background:radial-gradient(circle at 35% 25%,#d4af37,#8a6b24 72%);box-shadow:0 3px 8px #280813,inset 0 0 0 4px #e5c27a2e;color:#fff1c8;font:2rem "Great Vibes",cursive;cursor:pointer}
+.envelope.opened .flap{transform:rotateX(180deg);z-index:1}.envelope.opened .peek{transform:translateY(-100px)}.envelope.opened .seal{opacity:0;pointer-events:none}
+.hint{color:var(--gold);font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;animation:glow 2s infinite}
+.letter{display:none;position:relative;margin:10px auto 20px;width:min(100%,560px);padding:clamp(24px,6vw,42px);color:#41202a;background:linear-gradient(135deg,#fff8eb,#f0dfc5);border:1px solid var(--gold);box-shadow:0 20px 60px #0008}
+.letter:before{content:"";position:absolute;inset:8px;border:1px solid #97692b6b;pointer-events:none}.letter.show{display:block;animation:fade .8s both}
+.kicker{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:#8a5a37}
+.letter h2{font:clamp(2.6rem,8vw,4.2rem) "Great Vibes",cursive;color:#791b35;margin:8px 0}
+.letter p{font:clamp(1.15rem,3.5vw,1.35rem)/1.65 "Cormorant Garamond",serif}
+.question{font:700 clamp(1.9rem,6vw,2.8rem)/1.12 "Cormorant Garamond",serif;color:#70152d;margin:24px 0}
+.actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:22px}
+button{font:600 .7rem Montserrat,sans-serif;letter-spacing:.06em;cursor:pointer}
+.btn{border:1px solid #b08d35;padding:14px 19px;min-height:48px}.yes{background:#761831;color:#fff5e5}.think{background:transparent;color:#6b2032}
+.response{display:none;margin:20px auto 0;max-width:430px;padding:18px;background:#16080deF;border:1px solid #d4af37;color:var(--cream);font-size:.85rem;line-height:1.8}.response.show{display:block}.response strong{display:block;color:var(--gold);font:1.7rem "Cormorant Garamond",serif}
+.footer{margin-top:32px;color:#eee0dc;font-size:.65rem;letter-spacing:.1em;line-height:2;text-shadow:0 2px 10px #000}.footer span{color:var(--gold)}
+.confetti{position:fixed;top:-15px;width:8px;height:12px;z-index:10;animation:fall 3.4s forwards}
+@keyframes glow{50%{opacity:.6;text-shadow:0 0 12px #d4af37}}@keyframes fade{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}@keyframes fall{to{transform:translateY(110vh) rotate(760deg);opacity:0}}
+@media(max-width:420px){main{padding-top:25px}.scene{min-height:270px}.envelope{height:205px}.actions{flex-direction:column}.btn{width:100%}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+<main>
+<div class="eyebrow">A little secret, wrapped with love</div>
+<div class="script">Aireen &amp; Matej</div>
+<h1>To someone<br>so very special</h1>
+<p class="intro">A tiny bit of magic is waiting for you. Take a breath, open the envelope, and discover a question from my heart.</p>
+<section class="scene" aria-label="Sealed invitation envelope">
+<div class="envelope" id="envelope">
+<div class="peek">With love, Aireen</div><div class="front"></div><div class="flap"></div>
+<button class="seal" id="seal" aria-label="Open invitation">A<span style="font-size:.72em">&amp;</span>M</button>
+</div>
+</section>
+<p class="hint" id="hint">Tap the golden seal to open</p>
+<section class="letter" id="letter" aria-live="polite">
+<div class="kicker">A heartfelt question for you</div><h2 id="dear">My dearest Hannah,</h2>
+<p>As I get ready to begin one of the most beautiful chapters of my life, I keep thinking about the people who make my world brighter.</p>
+<p>You are one of those people. Having you beside me on this journey would mean more than words can say. I would love for you to stand by my side, share the happy tears, the laughter, and all the little memories that will make this day unforgettable.</p>
+<div class="question">Will you be my<br>Matron of Honor?</div>
+<p>With all my love, a grateful heart, and a little wedding-day sparkle…</p>
+<div class="script" style="color:#791b35">Aireen ♡</div>
+<div class="actions"><button class="btn yes" id="yes">YES, WITH ALL MY HEART! ♡</button><button class="btn think" id="think">I NEED A MOMENT ✨</button></div>
+</section>
+<div class="response" id="response" role="status"></div>
+<div class="footer">THE WEDDING OF <span>AIREEN &amp; MATEJ</span><br>20 MAY 2027 · JPark Island Resort &amp; Waterpark · Cebu, Philippines<br><span>Made with love, just for you</span></div>
+</main>
+<script>
+(function(){
+const params=new URLSearchParams(location.search),name=(params.get('to')||'Hannah').trim().slice(0,70);document.getElementById('dear').textContent='My dearest '+(name||'Hannah')+',';
+const env=document.getElementById('envelope'),letter=document.getElementById('letter');let opened=false;
+function open(){if(opened)return;opened=true;env.classList.add('opened');document.getElementById('hint').textContent='A little note, just for you';setTimeout(()=>{letter.classList.add('show');letter.scrollIntoView({behavior:'smooth',block:'center'})},650)}
+document.getElementById('seal').addEventListener('click',open);env.addEventListener('click',e=>{if(!opened&&e.target.id!=='seal')open()});
+function answer(value){const box=document.getElementById('response');box.classList.add('show');box.innerHTML='<strong>'+(value==='YES'?'It’s a yes to forever memories! ♡':'Take all the time you need ♡')+'</strong>'+(value==='YES'?'You just made my heart so happy! Please tap below to tell Aireen your answer.':'No pressure at all. Please tap below if you would like to let Aireen know.');let old=document.getElementById('emailReply');if(old)old.remove();const a=document.createElement('a');a.id='emailReply';a.className='btn yes';a.style.cssText='display:inline-block;margin-top:12px;text-decoration:none;padding:14px;color:white';a.textContent='SEND YOUR REPLY TO AIREEN';a.href='mailto:aireengc@gmail.com?subject='+encodeURIComponent('Matron of Honor invitation response')+'&body='+encodeURIComponent('Hi Aireen,\n\nMy answer is: '+value+'.\n\nLove, '+name);box.appendChild(document.createElement('br'));box.appendChild(a);box.scrollIntoView({behavior:'smooth',block:'center'});if(value==='YES'){const colors=['#d4af37','#a82b49','#f8e9c9','#fff4e2'];for(let i=0;i<48;i++){const p=document.createElement('i');p.className='confetti';p.style.left=Math.random()*100+'vw';p.style.background=colors[Math.floor(Math.random()*colors.length)];p.style.animationDelay=Math.random()+ 's';document.body.appendChild(p);setTimeout(()=>p.remove(),4500)}}}
+document.getElementById('yes').addEventListener('click',()=>answer('YES'));document.getElementById('think').addEventListener('click',()=>answer('I NEED A MOMENT'));
+})();
+</script>
+</body>
+</html>
